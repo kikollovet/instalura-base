@@ -25,9 +25,9 @@ export default function Menu() {
                 <Logo />
             </MenuWrapper.LeftSide>
             <MenuWrapper.CentralSide>
-                {links.map((link) => {
+                {links.map((link, index) => {
                     return (
-                        <li>
+                        <li key={`link___${index}`}>
                             <a href={link.url}>
                                 {link.texto}
                             </a>
