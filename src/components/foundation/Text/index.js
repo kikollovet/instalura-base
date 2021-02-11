@@ -1,7 +1,9 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
+import get from 'lodash/get';
 
+//É possivel tirar o primeiro CSS e depois o ${}
 const paragraph1 = css`
   ${({ theme }) => css`
     font-size: ${theme.typographyVariants.paragraph1.fontSize};
@@ -10,6 +12,7 @@ const paragraph1 = css`
   `}
 `;
 
+//É possivel tirar o primeiro CSS e depois o ${}
 const smallestException = css`
   ${({ theme }) => css`
     font-size: ${theme.typographyVariants.smallestException.fontSize};
@@ -25,6 +28,7 @@ export const TextStyleVariantsMap = {
 
 const TextBase = styled.span`
      ${({ variant }) => TextStyleVariantsMap[variant]}
+     color: ${({ theme, color }) => get(theme, `colors.${color}.color`)};
 `;
 
 export default function Text({ tag, variant, children, ...props }) {
