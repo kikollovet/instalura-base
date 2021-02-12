@@ -23,7 +23,7 @@ export const Button = styled.button`
     transition: opacity ${({ theme }) => theme.transition};
     border-radius: ${({ theme }) => theme.borderRadius};
     ${TextStyleVariantsMap.smallestException}
-
+    /*${(props) => console.log(props.theme)}*/
     ${breakpointsMedia({
         xs: css`
             ${TextStyleVariantsMap.smallestException}

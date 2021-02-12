@@ -70,6 +70,8 @@ MenuWrapper.CentralSide = styled.div`
             order: initial;
             border: none;
             /*margin-left: 50px;*/
+
+            /*Mechi aqui para os três links ficarem mais bonitinhos*/
             margin: auto;
             margin-left: 50px;
             padding-top: 0;
