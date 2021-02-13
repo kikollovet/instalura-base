@@ -1,5 +1,4 @@
 import { css } from 'styled-components';
-import { breakpoints } from '..';
 import { breakpointsMedia } from './breakpointsMedia';
 
 export function propToStyle(propName) {
