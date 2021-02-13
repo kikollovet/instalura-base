@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { breakpointsMedia } from '../../../../theme/utils/breakpointsMedia';
-// import { propToStyle } from '../../../../theme/utils/propToStyle';
+import { propToStyle } from '../../../../theme/utils/propToStyle';
 
 const Col = styled.div`
   padding-right: 16px;
@@ -8,6 +8,10 @@ const Col = styled.div`
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
+  ${propToStyle('display')}
+  ${propToStyle('alignItems')}
+  ${propToStyle('justifyContent')}
+  ${propToStyle('flexDirection')}
   ${({ value }) => {
     if (typeof value === 'number') {
       return css`
@@ -98,21 +102,22 @@ export const Grid = {
     margin-left: auto;
     max-width: initial;
     ${breakpointsMedia({
-    sm: css`
-      max-width: 576px; 
-    `,
-    md: css`
-      max-width: 768px;
-      padding-right: 16px;
-      padding-left: 16px; 
-    `,
-    lg: css`
-      max-width: 1160px; 
-    `,
-    xl: css`
-      max-width: 1222px;
-    `,
-  })}
+        sm: css`
+            max-width: 576px; 
+        `,
+        md: css`
+            max-width: 768px;
+            padding-right: 16px;
+            padding-left: 16px; 
+        `,
+        lg: css`
+            max-width: 1160px; 
+        `,
+        xl: css`
+            max-width: 1222px;
+        `,
+    })}
+    ${propToStyle('marginTop')}
   `,
   Row: styled.div`
     display: flex;
