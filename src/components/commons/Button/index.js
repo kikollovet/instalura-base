@@ -6,6 +6,7 @@ import { propToStyle } from '../../../theme/utils/propToStyle';
 
 const ButtonGhost = css`
     color: ${(props) => get(props.theme, `colors.${props.variant}.color`)};
+    /* color: ${({ theme, variant }) => get(theme, `colors.${variant}.color`)}; */
     background: transparent;
 `
 

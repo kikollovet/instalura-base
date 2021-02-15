@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import get from 'lodash/get';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
+//import { typographyVariants } from '../../../theme/typographyVariants'
 
 //É possivel tirar o primeiro CSS e depois o ${}
 const paragraph1 = css`
@@ -71,4 +72,6 @@ Text.propTypes = {
     children: PropTypes.node.isRequired,
     tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span']),
     variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException']),
+    //A way to get the different styles of text without hard coding
+    //variant: PropTypes.oneOf(Object.keys(typographyVariants)),
 };
