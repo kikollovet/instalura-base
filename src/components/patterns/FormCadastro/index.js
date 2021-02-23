@@ -4,8 +4,15 @@ import TextField from '../../forms/TextField';
 import { Box } from '../../foundation/layout/Box';
 import { Grid } from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
+import styled from 'styled-components'
 
-function FormContent() {
+const ButtonClose = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+`
+
+function FormContent({onClose}) {
   const [userInfo, setUserInfo] = React.useState({
     usuario: 'omariosouto',
     email: 'devsoutinho@gmail.com',
@@ -19,6 +26,8 @@ function FormContent() {
     });
   }
 
+  
+
   const isFormInvalid = userInfo.usuario.length === 0 || userInfo.email.length === 0;
 
   return (
@@ -28,7 +37,11 @@ function FormContent() {
         console.log('O formulário ta pronto, vamos cadastrar de fato o usuario');
       }}
     >
-
+      <ButtonClose onClick={(event) => {
+        
+          onClose();
+        
+      }}>X</ButtonClose>  
       <Text
         variant="title"
         tag="h1"
@@ -77,7 +90,7 @@ function FormContent() {
 }
 
 // eslint-disable-next-line react/prop-types
-export default function FormCadastro({ propsDoModal }) {
+export default function FormCadastro({ propsDoModal, onClose }) {
   return (
     <Grid.Row
       marginLeft={0}
@@ -105,7 +118,7 @@ export default function FormCadastro({ propsDoModal }) {
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...propsDoModal}
         >
-          <FormContent />
+          <FormContent onClose={onClose}/>
         </Box>
       </Grid.Col>
     </Grid.Row>

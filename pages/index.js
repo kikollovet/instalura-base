@@ -40,7 +40,12 @@ export default function Home() {
         }}
       >
         {(propsDoModal) => (
-          <FormCadastro propsDoModal={propsDoModal} />
+          <FormCadastro 
+            onClose={() => {
+              setModalState(false);
+            }}
+            propsDoModal={propsDoModal}
+          />
         )}
       </Modal>
 
