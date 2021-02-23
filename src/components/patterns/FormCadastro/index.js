@@ -4,12 +4,18 @@ import TextField from '../../forms/TextField';
 import { Box } from '../../foundation/layout/Box';
 import { Grid } from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 
 const ButtonClose = styled.button`
   position: absolute;
   top: 0;
-  right: 0;
+  right: 3%;
+  ${breakpointsMedia({
+      md: css`
+        right: 0;
+      `,
+  })}
 `
 
 function FormContent({onClose}) {
