@@ -11,6 +11,8 @@ const ButtonClose = styled.button`
   position: absolute;
   top: 0;
   right: 3%;
+  border: 0;
+  background-color: transparent;
   ${breakpointsMedia({
       md: css`
         right: 0;
