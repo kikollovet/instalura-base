@@ -12,6 +12,7 @@ const Col = styled.div`
   ${propToStyle('alignItems')}
   ${propToStyle('justifyContent')}
   ${propToStyle('flexDirection')}
+  ${propToStyle('paddingRight')}
   ${({ value }) => {
     if (typeof value === 'number') {
       return css`
@@ -124,6 +125,10 @@ export const Grid = {
     flex-wrap: wrap;
     margin-right: -16px;
     margin-left: -16px;
+    ${propToStyle('flex')}
+    ${propToStyle('marginLeft')}
+    ${propToStyle('marginRight')}
+    ${propToStyle('justifyContent')}
   `,
   Col,
 }; 
