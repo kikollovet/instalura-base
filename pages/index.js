@@ -1,11 +1,16 @@
+import React from 'react';
 import Footer from '../src/components/commons/Footer'
 import Menu from '../src/components/commons/Menu'
 import Text from '../src/components/foundation/Text'
 import { Button } from '../src/components/commons/Button'
 import { Grid } from '../src/components/foundation/layout/Grid'
 import { Box } from '../src/components/foundation/layout/Box'
+import Modal from '../src/components/commons/Modal';
 
 export default function Home() {
+
+  const [isModalOpen, setModalState] = React.useState(false);
+
   return (
     <Box
       flex="1"
@@ -18,6 +23,35 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
+       {/*
+        [SOLID]
+        S = Single Responsability
+        O = Open Closed
+        L = Liskov Substitution
+        I = Interface Segregation
+        D = Dependency Inversion
+      */}
+      {/* {isModalOpen && <Modal />} */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setModalState(false);
+        }}
+      >
+        {(propsDoModal) => (
+          <Box
+            backgroundColor="white"
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...propsDoModal}
+          >
+            <div>
+              Nosso conteúdo pro modal
+            </div>
+          </Box>
+        )}
+      </Modal>
+
+
       <Menu />
 
       <Grid.Container
@@ -63,6 +97,11 @@ export default function Home() {
                   md: 'initial',
                 }}
                 display="block"
+                onClick={() => {
+                  // isModalOpen = true;
+                  console.log('isModalOpen', isModalOpen);
+                  setModalState(!isModalOpen); // novo state sendo atribuido
+                }}
               >
                 Cadastrar
               </Button>
