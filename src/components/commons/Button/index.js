@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
 import { TextStyleVariantsMap } from '../../foundation/Text';
@@ -25,7 +26,6 @@ export const Button = styled.button`
     transition: opacity ${({ theme }) => theme.transition};
     border-radius: ${({ theme }) => theme.borderRadius};
     ${TextStyleVariantsMap.smallestException}
-    /*${(props) => console.log(props.theme)}*/
     ${breakpointsMedia({
     xs: css`
       ${TextStyleVariantsMap.smallestException}
@@ -48,6 +48,7 @@ export const Button = styled.button`
     ${propToStyle('display')}
 
     /*${({ ghost }) => (ghost ? ButtonGhost : ButtonDefault)}*/
+    // eslint-disable-next-line func-names
     ${function (props) {
     if (props.ghost) {
       return ButtonGhost;
