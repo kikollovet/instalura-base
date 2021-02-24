@@ -141,7 +141,10 @@ function FormContent({ onClose }) {
       </Button>
 
       {isFormSubmited && submissionStatus === formStates.DONE && (
-        <Box>
+        <Box
+          display="flex"
+          justifyContent="center"
+        >
           <Lottie
             width="150px"
             height="150px"
