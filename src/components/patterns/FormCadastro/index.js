@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import styled, { css } from 'styled-components';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
 import { Lottie } from '@crello/react-lottie';
 import successAnimation from './animations/success.json';
 import errorAnimation from './animations/error.json';
@@ -11,15 +13,29 @@ import { Grid } from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 
-const ButtonClose = styled.button`
+const ButtonClose = styled.div`
   position: absolute;
   top: 0;
   right: 3%;
   border: 0;
   background-color: transparent;
+
   ${breakpointsMedia({
     md: css`
       right: 0;
+    `,
+  })}
+`;
+
+const CloseOutlineIcon = styled(CloseOutline)`
+  width: 30px;
+  height: 30px;
+  color: grey;
+
+  ${breakpointsMedia({
+    md: css`
+      width: 20px;
+      height: 20px;
     `,
   })}
 `;
@@ -90,11 +106,13 @@ function FormContent({ onClose }) {
           });
       }}
     >
-      <ButtonClose onClick={(event) => {
-        onClose();
-      }}
+      <ButtonClose
+        type="button"
+        onClick={(event) => {
+          onClose();
+        }}
       >
-        X
+        <CloseOutlineIcon />
       </ButtonClose>
       <Text
         variant="title"
