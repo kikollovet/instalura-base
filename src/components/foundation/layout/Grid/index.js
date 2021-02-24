@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import styled, { css } from 'styled-components';
 import { breakpointsMedia } from '../../../../theme/utils/breakpointsMedia';
 import { propToStyle } from '../../../../theme/utils/propToStyle';
@@ -103,22 +104,22 @@ export const Grid = {
     margin-left: auto;
     max-width: initial;
     ${breakpointsMedia({
-        sm: css`
-            max-width: 576px; 
-        `,
-        md: css`
-            max-width: 768px;
-            padding-right: 16px;
-            padding-left: 16px; 
-        `,
-        lg: css`
-            max-width: 1160px; 
-        `,
-        xl: css`
-            max-width: 1222px;
-        `,
-    })}
-    ${propToStyle('marginTop')}
+    sm: css`
+      max-width: 576px;
+    `,
+    md: css`
+      max-width: 768px;
+      padding-right: 16px;
+      padding-left: 16px;
+    `,
+    lg: css`
+      max-width: 1160px;
+    `,
+    xl: css`
+      max-width: 1222px;
+    `,
+  })}
+  ${propToStyle('marginTop')}
   `,
   Row: styled.div`
     display: flex;
@@ -131,4 +132,4 @@ export const Grid = {
     ${propToStyle('justifyContent')}
   `,
   Col,
-}; 
+};

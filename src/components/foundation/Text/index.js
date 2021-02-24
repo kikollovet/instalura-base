@@ -1,12 +1,13 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import PropTypes from 'prop-types'
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
+import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
-//import { typographyVariants } from '../../../theme/typographyVariants'
+// import { typographyVariants } from '../../../theme/typographyVariants'
 
-//É possivel tirar o primeiro CSS e depois o ${}
+// É possivel tirar o primeiro CSS e depois o ${}
 const paragraph1 = css`
   ${({ theme }) => css`
     font-size: ${theme.typographyVariants.paragraph1.fontSize};
@@ -15,7 +16,7 @@ const paragraph1 = css`
   `}
 `;
 
-//É possivel tirar o primeiro CSS e depois o ${}
+// É possivel tirar o primeiro CSS e depois o ${}
 const smallestException = css`
   ${({ theme }) => css`
     font-size: ${theme.typographyVariants.smallestException.fontSize};
@@ -25,25 +26,25 @@ const smallestException = css`
 `;
 
 export const TextStyleVariantsMap = {
-    smallestException,
-    paragraph1,
-    title: css`
+  smallestException,
+  paragraph1,
+  title: css`
     ${({ theme }) => css`
       font-size: ${theme.typographyVariants.titleXS.fontSize};
       font-weight: ${theme.typographyVariants.titleXS.fontWeight};
       line-height: ${theme.typographyVariants.titleXS.lineHeight};
     `}
     ${breakpointsMedia({
-      md: css`
+    md: css`
         ${({ theme }) => css`
           font-size: ${theme.typographyVariants.title.fontSize};
           font-weight: ${theme.typographyVariants.title.fontWeight};
           line-height: ${theme.typographyVariants.title.lineHeight};
         `}
       `,
-    })}
+  })}
   `,
-  };
+};
 
 const TextBase = styled.span`
      ${({ variant }) => TextStyleVariantsMap[variant]}
@@ -51,31 +52,33 @@ const TextBase = styled.span`
      ${propToStyle('textAlign')}
 `;
 
-export default function Text({ tag, variant, children, ...props }) {
-    return (
-        <TextBase
-            as={tag}
-            variant={variant}
-            {...props}
-        >
-            {children}
-        </TextBase>
-    )
+export default function Text({
+  tag, variant, children, ...props
+}) {
+  return (
+    <TextBase
+      as={tag}
+      variant={variant}
+      {...props}
+    >
+      {children}
+    </TextBase>
+  );
 }
 
 Text.defaultProps = {
-    tag: 'span',
-    variant: 'paragraph1',
-    children: null,
-}
+  tag: 'span',
+  variant: 'paragraph1',
+  children: null,
+};
 
 Text.propTypes = {
-    // children: PropTypes.node.isRequired,
-    // tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span']),
-    // variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException']),
-    children: PropTypes.node,
-    tag: PropTypes.string,
-    variant: PropTypes.string
-    //A way to get the different styles of text without hard coding
-    //variant: PropTypes.oneOf(Object.keys(typographyVariants)),
+  // children: PropTypes.node.isRequired,
+  // tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span']),
+  // variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException']),
+  children: PropTypes.node,
+  tag: PropTypes.string,
+  variant: PropTypes.string,
+  // A way to get the different styles of text without hard coding
+  // variant: PropTypes.oneOf(Object.keys(typographyVariants)),
 };

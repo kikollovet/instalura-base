@@ -1,14 +1,15 @@
-import { css } from 'styled-components';
+/* eslint-disable consistent-return */
+/* eslint-disable import/prefer-default-export */
 import { breakpointsMedia } from './breakpointsMedia';
 
 export function propToStyle(propName) {
   return (props) => {
     const propValue = props[propName];
 
-    if(typeof propValue === 'string' || typeof propValue === 'number') {
-        return {
-            [propName]: propValue
-        }
+    if (typeof propValue === 'string' || typeof propValue === 'number') {
+      return {
+        [propName]: propValue,
+      };
     }
 
     // if (typeof propValue === 'object') {
@@ -34,27 +35,27 @@ export function propToStyle(propName) {
     // }
 
     if (typeof propValue === 'object') {
-        return breakpointsMedia({
-            xs: {
-                [propName]: propValue.xs
-            },
-            sm: {
-                [propName]: propValue.sm
-            },
-            md: {
-                [propName]: propValue.md
-            },
-            lg: {
-                [propName]: propValue.lg
-            },
-            xl: {
-                [propName]: propValue.xl
-            },
-        })
+      return breakpointsMedia({
+        xs: {
+          [propName]: propValue.xs,
+        },
+        sm: {
+          [propName]: propValue.sm,
+        },
+        md: {
+          [propName]: propValue.md,
+        },
+        lg: {
+          [propName]: propValue.lg,
+        },
+        xl: {
+          [propName]: propValue.xl,
+        },
+      });
     }
 
     // return {
     //     [propName]: props[propName],
     // };
   };
-} 
+}

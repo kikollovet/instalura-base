@@ -49,7 +49,7 @@ function Modal({ isOpen, onClose, children }) {
         }
       }}
     >
-        
+
       {isOpen && <LockScroll />}
       <motion.div
         variants={{
@@ -83,4 +83,4 @@ Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default Modal; 
+export default Modal;

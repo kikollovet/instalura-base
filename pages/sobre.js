@@ -1,7 +1,9 @@
+import React from 'react';
+
 export default function PageSobre() {
-    return(
-        <div>
-            Página sobre
-        </div>
-    )
+  return (
+    <div>
+      Página sobre
+    </div>
+  );
 }

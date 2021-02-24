@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
-import get from 'lodash/get'
+import styled, { css } from 'styled-components';
+import get from 'lodash/get';
 import { TextStyleVariantsMap } from '../../foundation/Text';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 import { propToStyle } from '../../../theme/utils/propToStyle';
@@ -8,13 +8,14 @@ const ButtonGhost = css`
     color: ${(props) => get(props.theme, `colors.${props.variant}.color`)};
     /* color: ${({ theme, variant }) => get(theme, `colors.${variant}.color`)}; */
     background: transparent;
-`
+`;
 
 const ButtonDefault = css`
     color: ${(props) => get(props.theme, `colors.${props.variant}.contrastText`)};
     background-color: ${(props) => get(props.theme, `colors.${props.variant}.color`)};
-`
+`;
 
+// eslint-disable-next-line import/prefer-default-export
 export const Button = styled.button`
     border: 0;
     cursor: pointer;
@@ -26,35 +27,35 @@ export const Button = styled.button`
     ${TextStyleVariantsMap.smallestException}
     /*${(props) => console.log(props.theme)}*/
     ${breakpointsMedia({
-        xs: css`
-            ${TextStyleVariantsMap.smallestException}
-        `,
-        md: css`
-            padding: 12px 43px;
-            ${TextStyleVariantsMap.paragraph1}
-        `,
-    })}
+    xs: css`
+      ${TextStyleVariantsMap.smallestException}
+    `,
+    md: css`
+      padding: 12px 43px;
+      ${TextStyleVariantsMap.paragraph1}
+    `,
+  })}
 
     &:disabled {
     cursor: not-allowed;
-        opacity: .2;
+      opacity: .2;
     }
     ${({ fullWidth }) => fullWidth && css`
-        width: 100%;
+      width: 100%;
     `};
 
     ${propToStyle('margin')}
     ${propToStyle('display')}
-    
+
     /*${({ ghost }) => (ghost ? ButtonGhost : ButtonDefault)}*/
     ${function (props) {
-        if (props.ghost) {
-            return ButtonGhost;
-        }
-        return ButtonDefault;
-    }}
+    if (props.ghost) {
+      return ButtonGhost;
+    }
+    return ButtonDefault;
+  }}
     &:hover,
     &:focus {
-        opacity: .5;
+      opacity: .5;
     }
 `;

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { breakpointsMedia } from '../../../../theme/utils/breakpointsMedia';
+/* eslint-disable import/prefer-default-export */
+import styled from 'styled-components';
 import { propToStyle } from '../../../../theme/utils/propToStyle';
 
 export const Box = styled.div`
@@ -14,4 +14,4 @@ export const Box = styled.div`
     ${propToStyle('backgroundPosition')}
     ${propToStyle('boxShadow')}
     ${propToStyle('padding')}
-`
+`;

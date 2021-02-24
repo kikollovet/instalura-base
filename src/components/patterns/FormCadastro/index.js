@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
+import styled, { css } from 'styled-components';
 import { Button } from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import { Box } from '../../foundation/layout/Box';
 import { Grid } from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
-import styled, { css } from 'styled-components'
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 
 const ButtonClose = styled.button`
@@ -14,13 +15,14 @@ const ButtonClose = styled.button`
   border: 0;
   background-color: transparent;
   ${breakpointsMedia({
-      md: css`
-        right: 0;
-      `,
+    md: css`
+      right: 0;
+    `,
   })}
-`
+`;
 
-function FormContent({onClose}) {
+// eslint-disable-next-line react/prop-types
+function FormContent({ onClose }) {
   const [userInfo, setUserInfo] = React.useState({
     usuario: 'omariosouto',
     email: 'devsoutinho@gmail.com',
@@ -34,22 +36,22 @@ function FormContent({onClose}) {
     });
   }
 
-  
-
   const isFormInvalid = userInfo.usuario.length === 0 || userInfo.email.length === 0;
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
+        // eslint-disable-next-line no-console
         console.log('O formulário ta pronto, vamos cadastrar de fato o usuario');
       }}
     >
       <ButtonClose onClick={(event) => {
-        
-          onClose();
-        
-      }}>X</ButtonClose>  
+        onClose();
+      }}
+      >
+        X
+      </ButtonClose>
       <Text
         variant="title"
         tag="h1"
@@ -126,7 +128,7 @@ export default function FormCadastro({ propsDoModal, onClose }) {
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...propsDoModal}
         >
-          <FormContent onClose={onClose}/>
+          <FormContent onClose={onClose} />
         </Box>
       </Grid.Col>
     </Grid.Row>
