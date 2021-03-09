@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
+import { Link } from '../../commons/Link';
 // import { typographyVariants } from '../../../theme/typographyVariants'
 
 // É possivel tirar o primeiro CSS e depois o ${}
@@ -53,8 +54,22 @@ const TextBase = styled.span`
 `;
 
 export default function Text({
-  tag, variant, children, ...props
+  tag, variant, children, href, ...props
 }) {
+  if (href) {
+    return (
+      <TextBase
+        as={Link}
+        variant={variant}
+        href={href}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+        {...props}
+      >
+        {children}
+      </TextBase>
+    );
+  }
+
   return (
     <TextBase
       as={tag}
@@ -70,6 +85,7 @@ Text.defaultProps = {
   tag: 'span',
   variant: 'paragraph1',
   children: null,
+  href: '',
 };
 
 Text.propTypes = {
@@ -79,6 +95,7 @@ Text.propTypes = {
   children: PropTypes.node,
   tag: PropTypes.string,
   variant: PropTypes.string,
+  href: PropTypes.string,
   // A way to get the different styles of text without hard coding
   // variant: PropTypes.oneOf(Object.keys(typographyVariants)),
 };
