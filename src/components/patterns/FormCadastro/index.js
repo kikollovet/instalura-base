@@ -12,6 +12,7 @@ import { Box } from '../../foundation/layout/Box';
 import { Grid } from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
+import { Context } from '../../commons/Context';
 
 const ButtonClose = styled.div`
   position: absolute;
@@ -66,6 +67,7 @@ function FormContent({ onClose }) {
   }
 
   const isFormInvalid = userInfo.usuario.length === 0 || userInfo.nome.length === 0;
+  const contextPage = React.useContext(Context);
 
   return (
     <form
@@ -98,11 +100,17 @@ function FormContent({ onClose }) {
             setSubmissionStatus(formStates.DONE);
             // eslint-disable-next-line no-console
             // console.log(respostaConvertidaEmObjeto);
+            contextPage.setToken('15');
+            // eslint-disable-next-line no-console
+            console.log(`oi ${contextPage.token}`);
           })
           .catch((error) => {
             setSubmissionStatus(formStates.ERROR);
             // eslint-disable-next-line no-console
             // console.error(error);
+            contextPage.setToken('17');
+            // eslint-disable-next-line no-console
+            console.log(`oi ${contextPage.token}`);
           });
       }}
     >
@@ -120,6 +128,8 @@ function FormContent({ onClose }) {
         color="tertiary.main"
       >
         Pronto para saber da vida dos outros?
+        {' '}
+        {contextPage.token}
       </Text>
       <Text
         variant="paragraph1"
