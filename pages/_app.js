@@ -6,11 +6,11 @@ import theme from '../src/theme';
 // eslint-disable-next-line import/no-named-as-default
 import GlobalStyle from '../src/theme/GlobalStyle';
 import { SEO } from '../src/components/commons/SEO';
-import { Context } from '../src/components/commons/Context';
+import ContextProvider from '../src/components/commons/Context';
 
 // eslint-disable-next-line react/prop-types
 export default function App({ Component, pageProps }) {
-  const [tokenLog, setToken] = React.useState(undefined);
+  // const [tokenLog, setToken] = React.useState(undefined);
   return (
     <>
       <Head>
@@ -23,12 +23,14 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       <SEO headTitle="Home" />
-      <Context.Provider value={{ token: tokenLog, setToken: (valor) => setToken(valor) }}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
+
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <ContextProvider>
           <Component {...pageProps} />
-        </ThemeProvider>
-      </Context.Provider>
+        </ContextProvider>
+      </ThemeProvider>
+
     </>
   );
 }

@@ -100,7 +100,7 @@ function FormContent({ onClose }) {
             setSubmissionStatus(formStates.DONE);
             // eslint-disable-next-line no-console
             // console.log(respostaConvertidaEmObjeto);
-            contextPage.setToken('15');
+            localStorage.removeItem('token', contextPage.token);
             // eslint-disable-next-line no-console
             console.log(`oi ${contextPage.token}`);
           })
@@ -108,7 +108,13 @@ function FormContent({ onClose }) {
             setSubmissionStatus(formStates.ERROR);
             // eslint-disable-next-line no-console
             // console.error(error);
-            contextPage.setToken('17');
+            contextPage.setToken('280');
+            contextPage.token = '280';
+            // const tokenLocalStorage = '230';
+            localStorage.setItem('token', contextPage.token);
+            // eslint-disable-next-line no-console
+          })
+          .finally(() => {
             // eslint-disable-next-line no-console
             console.log(`oi ${contextPage.token}`);
           });
