@@ -12,7 +12,7 @@ export default function ContextProvider({ children }) {
   const [tokenLog, setToken] = React.useState(undefined);
 
   React.useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     if (token) {
       setToken(token);
     }

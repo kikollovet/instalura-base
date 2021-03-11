@@ -111,7 +111,7 @@ function FormContent({ onClose }) {
             contextPage.setToken('300');
             contextPage.token = '300';
             // const tokenLocalStorage = '230';
-            localStorage.setItem('token', contextPage.token);
+            sessionStorage.setItem('token', contextPage.token);
             // eslint-disable-next-line no-console
           })
           .finally(() => {
