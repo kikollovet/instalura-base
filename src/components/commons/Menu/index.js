@@ -29,9 +29,9 @@ export default function Menu({ onCadastrarClick }) {
       <MenuWrapper.CentralSide>
         {links.map((link) => (
           <li key={`link___${link.url}`}>
-            <a href={link.url}>
+            <Text variant="smallestException" tag="a" href={link.url}>
               {link.texto}
-            </a>
+            </Text>
           </li>
         ))}
       </MenuWrapper.CentralSide>

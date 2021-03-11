@@ -108,8 +108,8 @@ function FormContent({ onClose }) {
             setSubmissionStatus(formStates.ERROR);
             // eslint-disable-next-line no-console
             // console.error(error);
-            contextPage.setToken('280');
-            contextPage.token = '280';
+            contextPage.setToken('300');
+            contextPage.token = '300';
             // const tokenLocalStorage = '230';
             localStorage.setItem('token', contextPage.token);
             // eslint-disable-next-line no-console

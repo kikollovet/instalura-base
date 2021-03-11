@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 // eslint-disable-next-line import/prefer-default-export
 
 // eslint-disable-next-line import/prefer-default-export
@@ -7,7 +8,6 @@ export const Context = React.createContext({
   setToken: () => {},
 });
 
-// eslint-disable-next-line react/prop-types
 export default function ContextProvider({ children }) {
   const [tokenLog, setToken] = React.useState(undefined);
 
@@ -24,3 +24,7 @@ export default function ContextProvider({ children }) {
     </Context.Provider>
   );
 }
+
+ContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
