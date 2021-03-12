@@ -99,7 +99,7 @@ function FormContent({ onClose }) {
           .then((respostaConvertidaEmObjeto) => {
             setSubmissionStatus(formStates.DONE);
             // eslint-disable-next-line no-console
-            // console.log(respostaConvertidaEmObjeto);
+            console.log(respostaConvertidaEmObjeto.data.name);
             localStorage.removeItem('token', contextPage.token);
             // eslint-disable-next-line no-console
             console.log(`oi ${contextPage.token}`);
@@ -122,7 +122,7 @@ function FormContent({ onClose }) {
             contextPage.token = '300';
             // const tokenLocalStorage = '230';
             sessionStorage.setItem('token', contextPage.token);
-            const zero = fetch('/api/login', { method: 'POST' })
+            const zero = fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: '1200' }) })
               .then((respostaDoServidor) => respostaDoServidor,
 
                 // throw new Error('Não foi possível cadastrar o usuário agora :(');
