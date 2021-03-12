@@ -103,6 +103,16 @@ function FormContent({ onClose }) {
             localStorage.removeItem('token', contextPage.token);
             // eslint-disable-next-line no-console
             console.log(`oi ${contextPage.token}`);
+            fetch('/api/logout', { method: 'POST' })
+              .then((respostaDoServidor) => respostaDoServidor,
+
+                // throw new Error('Não foi possível cadastrar o usuário agora :(');
+              // eslint-disable-next-line function-paren-newline
+              )
+              .then((respostaConvertidaEmObjetooo) => {
+                // eslint-disable-next-line no-console
+                console.log(respostaConvertidaEmObjetooo);
+              });
           })
           .catch((error) => {
             setSubmissionStatus(formStates.ERROR);
@@ -112,7 +122,16 @@ function FormContent({ onClose }) {
             contextPage.token = '300';
             // const tokenLocalStorage = '230';
             sessionStorage.setItem('token', contextPage.token);
-            // eslint-disable-next-line no-console
+            const zero = fetch('/api/login', { method: 'POST' })
+              .then((respostaDoServidor) => respostaDoServidor,
+
+                // throw new Error('Não foi possível cadastrar o usuário agora :(');
+              // eslint-disable-next-line function-paren-newline
+              )
+              .then((respostaConvertidaEmObjeto) => {
+                // eslint-disable-next-line no-console
+                console.log(respostaConvertidaEmObjeto);
+              });
           })
           .finally(() => {
             // eslint-disable-next-line no-console

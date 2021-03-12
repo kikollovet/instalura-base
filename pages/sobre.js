@@ -1,5 +1,6 @@
 import React from 'react';
 // import { useRouter } from 'next/router';
+import { withIronSession } from 'next-iron-session';
 import { Context } from '../src/components/commons/Context';
 
 export default function PageSobre() {
@@ -28,15 +29,17 @@ export default function PageSobre() {
   );
 }
 
-// export async function getServerSideProps(context) {
+// export async function getServerSideProps() {
 //   // const token = await localStorage.getItem('token');
 //   // eslint-disable-next-line prefer-destructuring
-//   const token = Context.Provider.token;
+//   // const token = Context.Provider.token;
 //   // const contextPage = React.useContext(Context);
 //   // const token = context.props.token;
-//   console.log(token);
-
-//   if (!token === '300') {
+//   // console.log(token);
+//   const user = await fetch('http://localhost:3000/api/user', { method: 'POST' });
+//   const data = await user.json();
+//   console.log(data);
+//   if (!user) {
 //     return {
 //       redirect: {
 //         destination: '/',
@@ -49,6 +52,34 @@ export default function PageSobre() {
 //     props: {}, // will be passed to the page component as props
 //   };
 // }
+export const getServerSideProps = withIronSession(
+  // eslint-disable-next-line no-unused-vars
+  async ({ req, res }) => {
+    const user = req.session.get('user');
+    // eslint-disable-next-line no-console
+    console.log(user);
+    if (!user) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      };
+    }
+
+    return {
+      props: { user },
+    };
+  },
+  {
+    cookieName: 'teste',
+    cookieOptions: {
+      // eslint-disable-next-line no-unneeded-ternary
+      secure: process.env.NODE_ENV === 'production' ? true : false,
+    },
+    password: 'complex_password_at_least_32_characters_long',
+  },
+);
 
 // PageSobre.getInitialProps = async () => {
 //   const token = await localStorage.getItem('token');
