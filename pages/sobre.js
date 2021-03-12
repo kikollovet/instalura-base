@@ -17,7 +17,7 @@ export default function PageSobre(props) {
   //     router.push('/');
   //   }
   // }, [!contextPage.token]);
-  const [cat, setCat] = React.useState();
+  const [cat, setCat] = React.useState({});
   // let vars;
   if (contextPage.token) {
     return (
@@ -29,10 +29,11 @@ export default function PageSobre(props) {
         {props.user.token}
         <div>
           {/* {props.faqCategories.map((category) => (<h1 onClick={() => { vars = { nome: category.title, data: '17/07' }; alert(vars.nome + vars.data); }}>{category.title}</h1>))} */}
-          {props.faqCategories.map((category) => (<h1 onClick={() => { setCat(category.title); }}>{category.title}</h1>))}
+          {props.faqCategories.map((category) => (<h1 onClick={() => { setCat({ nome: category.title, teste: 'testando' }); }}>{category.title}</h1>))}
         </div>
         {props.faqCategories[3].title}
-        {cat}
+        {cat.nome}
+        {cat.teste}
       </div>
     );
   }
