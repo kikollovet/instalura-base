@@ -1,9 +1,14 @@
 import { withIronSession } from 'next-iron-session';
 
 // eslint-disable-next-line no-unused-vars
-function handler(req, res, session) {
-  const user = req.session.get('user');
-  res.send({ user });
+async function handler(req, res, session) {
+  const { authorization } = await req.headers;
+  if (authorization === 'Bearer 12345') {
+    const user = req.session.get('user');
+    res.send({ user });
+  } else {
+    res.send('You are not allowed here');
+  }
 }
 
 export default withIronSession(handler, {
