@@ -121,8 +121,9 @@ function FormContent({ onClose }) {
             contextPage.setToken('300');
             contextPage.token = '300';
             // const tokenLocalStorage = '230';
+            const teste = 'Olá mundo';
             sessionStorage.setItem('token', contextPage.token);
-            const zero = fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: '1200' }) })
+            const zero = fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: teste, token: 'ed12ed34' }) })
               .then((respostaDoServidor) => respostaDoServidor,
 
                 // throw new Error('Não foi possível cadastrar o usuário agora :(');

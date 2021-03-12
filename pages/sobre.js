@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 // import { useRouter } from 'next/router';
 import { withIronSession } from 'next-iron-session';
 import { Context } from '../src/components/commons/Context';
 
-export default function PageSobre() {
+export default function PageSobre(props) {
   const contextPage = React.useContext(Context);
   // const router = useRouter();
   // const token = localStorage.getItem('token');
@@ -19,6 +20,8 @@ export default function PageSobre() {
         Página sobre
         {' '}
         {contextPage.token}
+        {props.user.id}
+        {props.user.token}
       </div>
     );
   }
