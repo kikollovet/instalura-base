@@ -1,3 +1,7 @@
+/* eslint-disable no-alert */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 import React from 'react';
 // import { useRouter } from 'next/router';
@@ -13,7 +17,8 @@ export default function PageSobre(props) {
   //     router.push('/');
   //   }
   // }, [!contextPage.token]);
-
+  const [cat, setCat] = React.useState();
+  // let vars;
   if (contextPage.token) {
     return (
       <div>
@@ -22,6 +27,12 @@ export default function PageSobre(props) {
         {contextPage.token}
         {props.user.id}
         {props.user.token}
+        <div>
+          {/* {props.faqCategories.map((category) => (<h1 onClick={() => { vars = { nome: category.title, data: '17/07' }; alert(vars.nome + vars.data); }}>{category.title}</h1>))} */}
+          {props.faqCategories.map((category) => (<h1 onClick={() => { setCat(category.title); }}>{category.title}</h1>))}
+        </div>
+        {props.faqCategories[3].title}
+        {cat}
       </div>
     );
   }
@@ -59,6 +70,11 @@ export const getServerSideProps = withIronSession(
   // eslint-disable-next-line no-unused-vars
   async ({ req, res }) => {
     const user = req.session.get('user');
+    const faqCategories = await fetch('https://instalura-api.vercel.app/api/content/faq').then(async (resp) => {
+      const response = await resp.json();
+      // ATENçâo ---- LEMBRE DE TIRAR O DATA
+      return response.data;
+    });
     // eslint-disable-next-line no-console
     console.log(user);
     if (!user) {
@@ -71,7 +87,7 @@ export const getServerSideProps = withIronSession(
     }
 
     return {
-      props: { user },
+      props: { user, faqCategories },
     };
   },
   {
