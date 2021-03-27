@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
-import { Link } from '../../commons/Link';
+import Link from '../../commons/Link';
 // import { typographyVariants } from '../../../theme/typographyVariants'
 
 // É possivel tirar o primeiro CSS e depois o ${}
@@ -94,8 +94,8 @@ Text.propTypes = {
   // variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException']),
   children: PropTypes.node,
   tag: PropTypes.string,
-  variant: PropTypes.string,
   href: PropTypes.string,
+  variant: PropTypes.string,
   // A way to get the different styles of text without hard coding
   // variant: PropTypes.oneOf(Object.keys(typographyVariants)),
 };
