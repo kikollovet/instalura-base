@@ -10,11 +10,11 @@ const Col = styled.div`
   flex-grow: 1;
   max-width: 100%;
   ${propToStyle('display')}
+  ${propToStyle('order')}
   ${propToStyle('alignItems')}
   ${propToStyle('justifyContent')}
   ${propToStyle('flexDirection')}
   ${propToStyle('paddingRight')}
-  ${propToStyle('order')}
   ${({ value }) => {
     if (typeof value === 'number') {
       return css`
