@@ -1,4 +1,6 @@
 /* eslint-disable import/prefer-default-export */
+import { setCookie, destroyCookie } from 'nookies';
+
 async function HttpClient(url, { headers, body, ...options }) {
   return fetch(url, {
     headers: {
@@ -27,11 +29,21 @@ export const loginService = {
       },
     })
       .then((respostaConvertida) => {
+        const { token } = respostaConvertida.data;
+        const DAY_IN_SECONDS = 86400;
         // Salvar o Token
+        setCookie(null, 'APP_TOKEN', token, {
+          path: '/',
+          maxAge: DAY_IN_SECONDS * 7,
+        });
         // Escrever os testes
         // eslint-disable-next-line no-console
-        console.log(respostaConvertida);
-        return respostaConvertida;
+        return {
+          token,
+        };
       });
+  },
+  logout() {
+    destroyCookie(null, 'APP_TOKEN');
   },
 };
