@@ -4,14 +4,14 @@ import { isStagingEnv } from '../../infra/env/isStagingEnv';
 
 async function HttpClient(url, { headers, body, ...options }) {
   // eslint-disable-next-line no-console
-  console.log(url, {
-    headers: {
-      ...headers,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-    ...options,
-  });
+  // console.log(url, {
+  //   headers: {
+  //     ...headers,
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify(body),
+  //   ...options,
+  // });
   return fetch(url, {
     headers: {
       ...headers,
