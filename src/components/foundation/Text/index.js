@@ -6,6 +6,7 @@ import get from 'lodash/get';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 import Link from '../../commons/Link';
+import { WebsitePageContext } from '../../wrappers/WebsitePage/context';
 // import { typographyVariants } from '../../../theme/typographyVariants'
 
 // É possivel tirar o primeiro CSS e depois o ${}
@@ -54,8 +55,14 @@ const TextBase = styled.span`
 `;
 
 export default function Text({
-  tag, variant, children, href, ...props
+  tag, variant, children, href, cmsKey, ...props
 }) {
+  const websitePageContext = React.useContext(WebsitePageContext);
+
+  const componentContent = cmsKey
+    ? websitePageContext.getCMSContent(cmsKey)
+    : children;
+
   if (href) {
     return (
       <TextBase
@@ -65,7 +72,7 @@ export default function Text({
       // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
       >
-        {children}
+        {componentContent}
       </TextBase>
     );
   }
@@ -76,7 +83,7 @@ export default function Text({
       variant={variant}
       {...props}
     >
-      {children}
+      {componentContent}
     </TextBase>
   );
 }
@@ -86,6 +93,7 @@ Text.defaultProps = {
   variant: 'paragraph1',
   children: null,
   href: '',
+  cmsKey: undefined,
 };
 
 Text.propTypes = {
@@ -96,6 +104,7 @@ Text.propTypes = {
   tag: PropTypes.string,
   href: PropTypes.string,
   variant: PropTypes.string,
+  cmsKey: PropTypes.string,
   // A way to get the different styles of text without hard coding
   // variant: PropTypes.oneOf(Object.keys(typographyVariants)),
 };
